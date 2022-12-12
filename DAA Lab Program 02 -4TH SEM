@@ -1,0 +1,143 @@
+2a) ---------------->
+
+public class multilevel
+{
+public static void main(String args[])
+{
+Teaching t1 = new Teaching(11,998765434,31000,"mohan alva","cse",10);
+Teaching t2 = new Teaching(12,996655546,30000,"nikil alva","ise",9);
+Teaching t3 = new Teaching(13,999933442,32000,"vivek alva","eee",8);
+technical t4 = new technical(11,998765434,31000,"pradeep v","hacking");
+technical t5 = new technical(12,996655546,30000,"sudheer shetty","webdevelopment");
+technical t6 = new technical(13,999933442,32000,"peter fernadis","coding");
+contract t7 = new contract(11,998765434,350000,"sujan","4");
+contract t8 = new contract(12,996655546,330000,"suraj","3");
+contract t9 = new contract(13,999933442,32000,"prasad","2");
+t1.Tdisplay();
+t2.Tdisplay();
+t3.Tdisplay();
+t4.Tdisplay();
+t5.Tdisplay();
+t6.Tdisplay();
+t7.Tdisplay();
+t8.Tdisplay();
+t9.Tdisplay();
+}
+}
+ class staff {
+int staffid ,phone,salary;
+String name;
+public staff(int id ,int no ,int sal ,String na)
+{
+staffid=id;
+phone=no;
+salary=sal;
+name=na;
+}
+void display()
+{
+System.out.println("___________");
+System.out.println("staff ID;"+""+staffid);
+System.out.println("staff phone number;"+""+phone);
+System.out.println("staff salary;"+""+salary);
+System.out.println("staff name;"+""+name);
+}
+
+}
+class Teaching extends staff
+{
+String domain;
+int no_of_publication;
+public Teaching(int id,int no,int sal,String na,String d,int nop)
+{
+super(id,no,sal,na);
+domain=d;
+no_of_publication=nop;
+}
+void Tdisplay()
+{
+System.out.println("___________");
+System.out.println("Teaching staff details");
+super.display();
+System.out.println("Domain;"+""+domain);
+System.out.println("No_of_publications;"+""+no_of_publication);
+}
+
+}
+class technical extends staff
+{
+String skills;
+int no_of_publication;
+public technical(int id,int no,int sal,String na,String d)
+{
+super(id,no,sal,na);
+skills=d;
+}
+void Tdisplay()
+{
+System.out.println("___________");
+System.out.println("teachnical staff details");
+super.display();
+System.out.println("skills;"+""+skills);
+}
+}
+class contract extends staff
+{
+String period;
+int no_of_publication;
+public contract(int id,int no,int sal,String na,String d)
+{
+super(id,no,sal,na);
+period=d;
+}
+void Tdisplay()
+{
+System.out.println("___________");
+System.out.println("contract details");
+super.display();
+System.out.println("period;"+""+period);
+}
+}
+
+2b)----------------------------------->
+
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
+public class customer {
+String name;
+String date;
+public void read()
+{
+Scanner input = new Scanner(System.in);
+name =input.next();
+date =input.next();
+}
+public void display()
+{
+System.out.print(name+",");
+String delims="/";
+StringTokenizer st = new StringTokenizer(date,delims);
+while(st.hasMoreElements())
+{
+System.out.print(st.nextElement()+",");
+}
+System.out.println();
+}
+public static void main(String[]args)
+{
+System.out.println("enter the customer details");
+customer[] cus=new customer[30];
+Scanner sc=new Scanner(System.in);
+System.out.println("enter the number of customer");
+int n=sc.nextInt();
+for(int i=0;i<n;i++)
+{
+cus[i]=new customer();
+cus[i].read();
+}
+for(int i=0;i<n;i++)
+cus[i].display();
+}
+
+}
