@@ -1,0 +1,120 @@
+1A)---------------->
+PROGRAM 1(a):
+Create a java class called student with the following details as variables within it.
+1. USN
+2.Name
+3.Programme
+4.Phone
+Write a java program to create nStudent objects and print the usn, name, programme, phone of the objects
+with suitable headings.
+
+SOLUTION------->
+
+import java.util.Scanner;
+public class student1 {
+String USN;
+String Name;
+String Programme;
+int phone;
+void insertRecord(String usn,String name,String pgm,int ph)
+{
+USN=usn;
+Name=name;
+Programme=pgm;
+phone=ph;
+}
+void displayRecord()
+{
+System.out.println(USN+" "+Name+" "+Programme+" "+phone);
+}
+public static void main(String[] args) {
+student1 s[]=new student1[100];
+Scanner sc=new Scanner(System.in);
+System.out.println("ENTER NUMBER OF STUDENTS");
+int n=sc.nextInt();
+for(int i=0;i<n;i++)
+s[i]=new student1();
+for(int j=0;j<n;j++)
+{
+System.out.println("ENTER THE USN, NAME, PROGRAMME, AND PHONE NUMBER");
+String USN=sc.next();
+String Name=sc.next();
+String Programme=sc.next();
+int phone=sc.nextInt();
+s[j].insertRecord(USN, Name,Programme, phone);
+}
+for(int m=0;m<n;m++)
+{
+s[m].displayRecord();
+}
+}
+}
+
+1B  -------------->
+PROGRAM 1(b):
+Write a java program to implement the stack using arrays. Write push(), pop() and display() methods to
+demonstrate its working.
+
+SOLUTION------->
+
+
+import java.util.Scanner;
+public class stack {
+final int max=5;
+int s[]=new int[max];
+int top=-1;
+void push(int ele)
+{
+if(top>=max-1)
+System.out.println("STACK OVERFLOW");
+else
+s[++top]=ele;
+}
+int pop()
+{
+int z=0;
+if(top==-1)
+System.out.println("STACK UNDERFLOW");
+else
+z=s[top--];
+return z;
+}
+void display()
+{
+if(top==-1)
+System.out.println("STACK IS EMPTY");
+else
+{
+for(int i=top;i>-1;i--)
+System.out.println(s[i]+" ");
+}
+}
+public static void main(String[] args)
+{
+int q=1;
+stack m=new stack();
+System.out.println("PROGRAM TO PERFORM STACK OPERATIONS");
+Scanner sc=new Scanner(System.in);
+while(q!=0)
+{
+System.out.println("ENTER YOUR CHOICE 1.PUSH 2.POP 3.DISPLAY 4.EXIT");
+int ch=sc.nextInt();
+switch(ch)
+{
+case 1: System.out.println("ENTER THE ELEMENT TO BE PUSHED");
+int ele=sc.nextInt();
+m.push(ele);
+break;
+case 2: int popele;
+popele=m.pop();
+System.out.println("THE POPPED ELEMENT IS "+popele);
+break;
+case 3: System.out.println("ELEMENTS IN THE STACK ARE:");
+m.display();
+break;
+default: System.out.println("INVALID OPTION");
+q=0;
+}
+}
+}
+}
