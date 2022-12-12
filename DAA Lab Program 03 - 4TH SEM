@@ -1,0 +1,96 @@
+Experiment No. 3a
+Write a Java program to read two integers a and b. Compute a/b and print, when b is not
+zero. Raise an exception when b is equal to zero.
+
+//------------------------------------------------------------>
+
+import java.util.Scanner;
+class division
+{
+	public static void main(String[] args)
+	{
+		int a,b,result;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("ENTER NUMERATOR:" );
+		a = sc.nextInt();
+		System.out.println("ENTER DENOMINATOR:" );
+		b = sc.nextInt();
+		try
+		{
+			result=a/b;
+			System.out.println("RESULT=" + result);
+		}
+		catch(ArithmeticException e)
+		{
+			System.out.println("exception caught: Divide by zero error"+e);
+		}
+	}
+}
+
+
+3B)----------------------------------------------->
+Experiment No. 3b
+Write a Java program that implements a multi-thread application that hash tree threads.
+First thread generates a random integer for every 1 second; second thread computes the
+square of the number and prints; third thread will print the value of cube of the number.
+
+//--------------->
+
+import java.util.*;
+class multithread 
+{
+	public static void main(String[] args)
+	{
+		first a=new first();
+		a.start();
+	}
+}
+class second implements Runnable
+{
+	public int x;
+	public second (int x)
+	{
+		this.x=x;
+	}
+		public void run()
+		{
+			System.out.println("SECOND THREAD: SQUARE OF THE NUMBER IS "+x*x);
+		}
+}
+class third implements Runnable
+{
+	public int x;
+	public third (int x)
+	{
+		this.x=x;
+	}
+		public void run()
+		{
+			System.out.println("THIRD THREAD: CUBE OF THE NUMBER IS "+x*x*x);
+		}
+}
+class first extends Thread
+{
+	public void run()
+	{
+		int num=0;
+		Random r=new Random();
+		try
+		{
+			for(int i=0;i<5;i++)
+			{
+				num=r.nextInt(100);
+				System.out.println("FIRST THREAD GENERATED NUMBER IS "+num);
+				Thread t2=new Thread(new second(num));
+				t2.start();
+				Thread t3=new Thread(new third(num));
+				t3.start();
+				Thread.sleep(1000);
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+	}
+}
